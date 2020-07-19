@@ -1,0 +1,45 @@
+name: Verify that the code is valid.
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - ready_for_review
+      - synchronize
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-scripts --no-progress --no-suggest
+
+      - name: Validate code styles
+        run: vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --quiet src
+
+      - name: Validate code quality
+        run: vendor/bin/phpstan analyze --configuration=phpstan.neon.dist --quiet src
+
+      - name: Running tests
+        run: vendor/bin/phpunit --stop-on-warning --bootstrap tests/bootstrap.php --configuration phpunit.xml.dist tests
