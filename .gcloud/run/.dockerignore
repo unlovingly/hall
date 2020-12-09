@@ -1,0 +1,31 @@
+# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+
+# Exclude locally vendored dependencies.
+.gcloud/
+.github/
+.idea/
+docker/
+fixtures/
+migrations/
+tests/
+var/cache/dev
+var/cache/test
+vendor/
+
+# Exclude "build-time" ignore files.
+.dockerignore
+.gcloudignore
+
+# Exclude git history and configuration.
+.gitignore
+
+# Exclude host-dependent files.
+.env.test
+.php-version
+.php_cs.cache
+
+# Exclude development files.
+*.dist
+*.lock
+composer.json
+LICENSE
