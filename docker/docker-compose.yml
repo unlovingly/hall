@@ -12,12 +12,12 @@ services:
       - ./init.d:/docker-entrypoint-initdb.d
 
   php:
-    image: shin1x1/php-dev:8.0-fpm-buster
+    image: shin1x1/php-dev:7.4-fpm-buster
     depends_on:
       - db
     volumes:
       - ..:/var/www/app:cached
-      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./php.ini-development:/usr/local/etc/php/php.ini
     working_dir: /var/www/app
 
   web:
