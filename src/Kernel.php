@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\FrameworkContract\GoogleCloudPlatform\Containable;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -11,7 +12,10 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 class Kernel extends BaseKernel
 {
-    use MicroKernelTrait;
+    use Containable, MicroKernelTrait {
+        Containable::getCacheDir insteadof MicroKernelTrait;
+        Containable::getLogDir insteadof MicroKernelTrait;
+    }
 
     protected function configureContainer(ContainerConfigurator $container): void
     {

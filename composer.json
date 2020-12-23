@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": ">= 7.2",
+        "php": "^7.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.2",
@@ -33,7 +33,7 @@
         "symfony/yaml": "~5.2"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^2.17",
         "hautelook/alice-bundle": "^2.8",
         "phpstan/phpstan": "^0.12.32",
         "phpunit/phpunit": "^9.2",
