@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.2",
+        "php": "^7.4|^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.2",
@@ -34,20 +34,23 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
-        "hautelook/alice-bundle": "^2.8",
-        "phpstan/phpstan": "^0.12.32",
-        "phpunit/phpunit": "^9.2",
-        "symfony/debug-pack": "*",
+        "hautelook/alice-bundle": "^2.9",
+        "phpstan/phpstan": "^0.12.79",
+        "phpunit/phpunit": "^9.5",
+        "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
-        "symfony/profiler-pack": "*",
-        "symfony/test-pack": "*"
+        "symfony/profiler-pack": "^1.0",
+        "symfony/test-pack": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0"
+        }
     },
     "autoload": {
         "psr-4": {

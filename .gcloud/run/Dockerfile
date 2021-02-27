@@ -7,7 +7,7 @@ COPY composer.json composer.lock /app/
 RUN composer install --no-scripts --no-autoloader && \
     composer dump-autoload --no-scripts --optimize --classmap-authoritative --no-dev --ignore-platform-reqs
 
-FROM shin1x1/php-dev:7.4-apache-buster
+FROM shin1x1/php-dev:8.0-apache-buster
 
 ENV PORT 8080
 ENV PHP_INI_DIR /usr/local/etc/php
