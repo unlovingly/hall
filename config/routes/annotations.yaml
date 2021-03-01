@@ -1,5 +1,5 @@
 controllers:
-    resource: ../../src/FrameworkContract/Symfony/Action/
+    resource: ../../src/
     type: annotation
 
 kernel:
