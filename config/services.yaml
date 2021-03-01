@@ -22,15 +22,8 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/FrameworkContract/Symfony/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    App\FrameworkContract\Symfony\Action\:
-        resource: '../src/FrameworkContract/Symfony/Action/'
-        tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
